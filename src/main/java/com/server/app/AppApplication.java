@@ -7,7 +7,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
-import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 
 @SpringBootApplication
 @EnableMongoRepositories
@@ -20,6 +19,7 @@ public class AppApplication implements CommandLineRunner {
 
 	}
 	public void createGroceryItems() {
+
 		System.out.println("Data creation started...");
 		System.out.println("***************** the data added *****************" +
 				"\n name : Whole Wheat Biscuit" +
