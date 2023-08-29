@@ -1,0 +1,59 @@
+package com.server.app.api;
+
+import com.server.app.model.barber;
+import com.server.app.repository.barberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/todos")
+public class barbersAddDecument {
+    private List<barber> barbers = new ArrayList<>();
+    @Autowired
+    barberRepository groceryItemRepo;
+
+    @GetMapping
+    public List<barber> getTodos() {
+        createGroceryItems();
+        return barbers;
+    }
+    public void createGroceryItems() {
+        System.out.println("Data creation started...");
+        System.out.println("***************** the data added *****************" +
+                "\n name : Whole Wheat Biscuit" +
+                "\n quantity : 5" +
+                "\n category : snacks");
+        groceryItemRepo.save(new barber( "Whole Wheat Biscuit", 5, "snacks"));
+        System.out.println("***************** the data added *****************" +
+                "\n name : XYZ Kodo Millet healthy" +
+                "\n quantity : 2" +
+                "\n category : millets");
+        groceryItemRepo.save(new barber( "XYZ Kodo Millet healthy", 2, "millets"));
+        System.out.println("***************** the data added *****************" +
+                "\n name : Dried Whole Red Chilli" +
+                "\n quantity : 2" +
+                "\n category : spices");
+        groceryItemRepo.save(new barber( "Dried Whole Red Chilli", 2, "spices"));
+        System.out.println("***************** the data added *****************" +
+                "\n name : Healthy Pearl Millet" +
+                "\n quantity : 1" +
+                "\n category : millets");
+        groceryItemRepo.save(new barber( "Healthy Pearl Millet", 1, "millets"));
+        System.out.println("***************** the data added *****************" +
+                "\n name : Bonny Cheese Crackers Plain" +
+                "\n quantity : 6" +
+                "\n category : snacks");
+        groceryItemRepo.save(new barber( "Bonny Cheese Crackers Plain", 6, "snacks"));
+        System.out.println("**************************************************");
+        System.out.println("Data creation complete...");
+    }
+    @PostMapping
+    public barber createTodo(@RequestBody barber barber) {
+        barbers.add(barber);
+        return barber;
+    }
+}
+
